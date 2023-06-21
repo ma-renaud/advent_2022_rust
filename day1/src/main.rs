@@ -31,4 +31,11 @@ fn main() {
     calories.insert(current_count);
 
     println!("Top calories: {}", calories.last().unwrap());
+
+    let mut sum: u32 = 0;
+    let mut calories_iter = calories.iter();
+    for _ in 0..3 {
+        sum += calories_iter.next_back().unwrap();
+    }
+    println!("Top three calories: {:?}", sum);
 }
