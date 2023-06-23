@@ -70,8 +70,8 @@ fn get_move_from_result(elve_hand: &RockPaperScissor, character: char) -> Option
 
 fn get_real_strategy(line: &str) -> Option<(RockPaperScissor, RockPaperScissor)> {
     if line.len() == 3 {
-        if let Some(expected) = get_move(line.as_bytes()[0] as char) {
-            if let Some(response) = get_move_from_result(&expected, line.as_bytes()[2] as char) {
+        if let Some(expected) = get_move(line.chars().nth(0).unwrap()) {
+            if let Some(response) = get_move_from_result(&expected, line.chars().nth(2).unwrap()) {
                 Some((expected, response))
             } else { None }
         } else { None }
