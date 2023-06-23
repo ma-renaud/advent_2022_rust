@@ -1,17 +1,8 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
+extern crate parser;
 
 use crate::RockPaperScissor::{Paper, Rock, Scissor};
 use crate::GameResult::{Draw, Lose, Win};
 
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-    where
-        P: AsRef<Path>,
-{
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
 
 #[derive(Debug, PartialEq, Eq)]
 enum RockPaperScissor {
@@ -110,7 +101,7 @@ fn get_score(elve_hand: &RockPaperScissor, player_hand: &RockPaperScissor) -> u8
 }
 
 fn main() {
-    let lines = match read_lines("day2/data.txt") {
+    let lines = match parser::read_lines("day2/data.txt") {
         Err(e) => panic!("Problem opening the file: {:?}", e),
         Ok(l) => l,
     };

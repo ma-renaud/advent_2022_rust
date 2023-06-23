@@ -1,15 +1,7 @@
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
-
-fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-    where P: AsRef<Path>, {
-    let file = File::open(filename)?;
-    Ok(io::BufReader::new(file).lines())
-}
+extern crate parser;
 
 fn main() {
-    let lines = match read_lines("day1/data_part1.txt") {
+    let lines = match parser::read_lines("day1/data_part1.txt") {
         Err(e) => panic!("Problem opening the file: {:?}", e),
         Ok(l) => l,
     };
