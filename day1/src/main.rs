@@ -1,4 +1,3 @@
-extern crate parser;
 use itertools::Itertools;
 
 fn main() {
