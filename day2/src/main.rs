@@ -1,9 +1,13 @@
 mod original_solution;
+mod fasterthanlime_solution;
 
 use original_solution::original_solution;
+use fasterthanlime_solution::fasterthanlime_solution;
 
 
-fn main() {
+fn main() -> color_eyre::Result<()> {
+    color_eyre::install()?;
+
     let lines = parser::read_lines("day2/data.txt").unwrap();
 
     let vec_lines: Vec<String> = lines
@@ -11,6 +15,9 @@ fn main() {
         .collect();
 
     original_solution(&vec_lines);
+    fasterthanlime_solution(&vec_lines)?;
+
+    Ok(())
 }
 
 

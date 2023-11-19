@@ -30,6 +30,7 @@ pub fn original_solution(lines: &Vec<String>) {
 
     let elapsed = now.elapsed();
 
+    println!("\nOriginal Solution");
     println!("Total score part1 is {}", sum_part1);
     println!("Total score part2 is {}", sum_part2);
     println!("Elapsed: {:.2?}", elapsed);
