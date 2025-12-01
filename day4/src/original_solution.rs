@@ -1,6 +1,9 @@
 use std::ops::RangeInclusive;
 
 pub fn original_solution(lines: &Vec<String>) -> (i32, i32) {
+    use std::time::Instant;
+    let now = Instant::now();
+
     let mut fully_contained_pair = 0;
     let mut overlapping_pair = 0;
 
@@ -11,7 +14,7 @@ pub fn original_solution(lines: &Vec<String>) -> (i32, i32) {
             .collect::<Vec<RangeInclusive<u16>>>();
 
         let [range1, range2] = ranges.as_slice() else {
-            core::panic!("Invalid line: {}", line);
+            panic!("Invalid line: {}", line);
         };
 
         if range_contains_range(range1, range2) {
@@ -23,8 +26,11 @@ pub fn original_solution(lines: &Vec<String>) -> (i32, i32) {
         }
     }
 
+    let elapsed = now.elapsed();
+
     println!("Fully contained pair(s): {}", fully_contained_pair);
     println!("Overlapping pair(s): {}", overlapping_pair);
+    println!("Elapsed: {:.2?}", elapsed);
 
     (fully_contained_pair, overlapping_pair)
 }
