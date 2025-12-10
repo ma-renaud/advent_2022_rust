@@ -5,11 +5,10 @@ use original_solution::original_solution;
 use fasterthanlime_solution::fasterthanlime_solution;
 
 fn main() -> color_eyre::Result<()> {
-    color_eyre::install()?;
-    let lines = parser::read_lines("day4/data.txt").unwrap();
+    let text = parser::read_lines("day4/data.txt")?;
 
     let vec_lines: Vec<String> =
-        lines.map(|l| l.expect("Could not parse line")).collect();
+        text.lines().map(|l| l.to_string()).collect();
 
 
     original_solution(&vec_lines);

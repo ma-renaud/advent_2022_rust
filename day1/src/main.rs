@@ -1,11 +1,10 @@
 use itertools::Itertools;
 
 fn main() {
-    let lines = parser::read_lines("day1/data.txt").unwrap();
+    let text = parser::read_lines("day1/data.txt").unwrap();
 
-    let vec_lines: Vec<String> = lines
-        .map(|l| l.expect("Could not parse line"))
-        .collect();
+    let vec_lines: Vec<String> =
+        text.lines().map(|l| l.to_string()).collect();
 
     original_solution(&vec_lines);
     fasterthanlime_btree_solution(&vec_lines);
